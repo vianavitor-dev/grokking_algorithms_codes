@@ -111,7 +111,8 @@ public class SearchTest {
 
         DijkstraAlgorithm dijkstra = new DijkstraAlgorithm();
         dijkstra.search(graph, costs, parents);
-
-        dijkstra.showTheMinPath(parents, "end");
+        
+        // System.out.println("a");
+        // dijkstra.showTheMinPath(parents, "end");
     }
 }

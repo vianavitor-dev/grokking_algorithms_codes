@@ -17,6 +17,8 @@ public class DijkstraAlgorithm {
             if (current.getValue() < minCost && !visited.contains(current.getKey())) {
                 minCost = current.getValue();
                 node = current.getKey();
+
+                visited.add(current.getKey());
             }
         }
 
@@ -26,20 +28,21 @@ public class DijkstraAlgorithm {
     public void search(HashMap<String, HashMap<String, Integer>> graph, HashMap<String, Integer> costs, HashMap<String, String> parents) {
         String node = getNodeWithMinCost(costs);
 
-        while (node != null) {
+        while (!node.isEmpty() || node != null) {
             visited.add(node);
+            System.out.println(node);
 
             int cost = costs.get(node);
 
             if (graph.get(node) == null) {
-                continue;
+                break;
             }
 
             Set<Entry<String, Integer>> neighbors = graph.get(node).entrySet();
 
             for (Entry<String, Integer> neighbor : neighbors) {
                 String n = neighbor.getKey();
-
+        
                 int neighborCost = neighbor.getValue();
                 int costNodeToNeighbor = cost + neighborCost;
 
